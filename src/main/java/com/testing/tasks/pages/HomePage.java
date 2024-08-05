@@ -1,6 +1,5 @@
 package com.testing.tasks.pages;
 
-import com.testing.tasks.managers.DriverManager;
 import com.testing.tasks.pages.base.BasePage;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebElement;
