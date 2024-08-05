@@ -9,9 +9,12 @@ public class DriverManager {
     private static WebDriver driver;
     private static DriverManager INSTANCE;
 
-    private DriverManager(){}
+    private TestPropertiesManager properties = TestPropertiesManager.getInstance();
 
-    public static DriverManager getInstance(){
+    private DriverManager() {
+    }
+
+    public static DriverManager getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new DriverManager();
         }
@@ -26,11 +29,13 @@ public class DriverManager {
     }
 
     private void initDriver() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", properties.getProperty("path.chrome.driver.windows"));
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(
+                Integer.parseInt(properties.getProperty("page.load.timeout"))));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(
+                Integer.parseInt(properties.getProperty("implicitly.wait"))));
     }
 
     public void quiteDriver() {
