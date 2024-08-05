@@ -1,5 +1,6 @@
 package com.testing.tasks.pages;
 
+import com.testing.tasks.managers.DriverManager;
 import com.testing.tasks.pages.base.BasePage;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebElement;
@@ -18,7 +19,7 @@ public class HomePage extends BasePage {
 
 
     public HomePage openHomePage() {
-        webDriver.navigate().to("https://www.rgs.ru/");
+        driverManager.getDriver().get("https://www.rgs.ru/");
         return this;
     }
 
@@ -39,7 +40,7 @@ public class HomePage extends BasePage {
     public TravelPage goToTravelPageFromSliderMenu() {
         String newURL = clickButtonSelectedSliderMenuElement();
         Assertions.assertTrue(newURL.contains("travel"));
-        webDriver.navigate().to(newURL);
+        driverManager.getDriver().navigate().to(newURL);
         return new TravelPage();
     }
 

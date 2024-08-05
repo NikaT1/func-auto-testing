@@ -9,7 +9,8 @@ public class HomePageTest {
     void firstTest() {
         new HomePage().openHomePage()
                 .selectSliderMenuElement("Путешествия")
-                .goToTravelPageFromSliderMenu();
+                .goToTravelPageFromSliderMenu()
+                .checkOpenPage("Страховка для туристов");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

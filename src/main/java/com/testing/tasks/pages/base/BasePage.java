@@ -1,24 +1,33 @@
 package com.testing.tasks.pages.base;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import com.testing.tasks.managers.DriverManager;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class BasePage {
 
-    protected WebDriver webDriver;
+    protected DriverManager driverManager = DriverManager.getInstance();
+    private WebDriverWait webDriverWait;
 
 
     public BasePage() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-        webDriver = new ChromeDriver();
-        webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-        PageFactory.initElements(webDriver, this);
+        PageFactory.initElements(driverManager.getDriver(), this);
+        webDriverWait = new WebDriverWait(driverManager.getDriver(), Duration.ofSeconds(10), Duration.ofSeconds(1));
     }
+
+    protected void scrollToElementJS(WebElement webElement) {
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driverManager.getDriver();
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView(true)", webElement);
+    }
+
+    protected WebElement waitUntilWebElementToBeClickable(WebElement webElement) {
+        return webDriverWait.until(ExpectedConditions.elementToBeClickable(webElement));
+    }
+
 
 }
