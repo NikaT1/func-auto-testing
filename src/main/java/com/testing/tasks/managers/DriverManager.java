@@ -32,4 +32,9 @@ public class DriverManager {
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
+
+    public void quiteDriver() {
+        driver.quit();
+        driver = null;
+    }
 }
