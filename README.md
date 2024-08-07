@@ -5,5 +5,5 @@
 - [X] Page Object pattern
 - [X] Page Factory
 - [X] Lombok
-- [ ] Allure
+- [X] Allure
 - [ ] Cucumber
