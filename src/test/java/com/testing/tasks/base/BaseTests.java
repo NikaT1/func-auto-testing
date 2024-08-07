@@ -16,7 +16,7 @@ public class BaseTests {
 
 
     @BeforeAll
-    void beforeAll() {
+    static void beforeAll() {
         InitManager.initFramework();
     }
 
@@ -26,7 +26,7 @@ public class BaseTests {
     }
 
     @AfterAll
-    void afterAll() {
+    static void afterAll() {
         InitManager.quitFramework();
     }
 }

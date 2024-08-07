@@ -1,9 +1,10 @@
 package com.testing.tasks;
 
+import com.testing.tasks.base.BaseTests;
 import com.testing.tasks.managers.PageManager;
 import org.junit.jupiter.api.Test;
 
-public class HomePageTest {
+public class HomePageTest extends BaseTests {
 
     @Test
     void firstTest() {
