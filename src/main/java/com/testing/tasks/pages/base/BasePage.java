@@ -12,7 +12,7 @@ import java.time.Duration;
 public class BasePage {
 
     protected DriverManager driverManager = DriverManager.getInstance();
-    private WebDriverWait webDriverWait;
+    private final WebDriverWait webDriverWait;
 
     public BasePage() {
         PageFactory.initElements(driverManager.getDriver(), this);
