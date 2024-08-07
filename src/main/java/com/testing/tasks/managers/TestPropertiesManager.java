@@ -10,6 +10,11 @@ public class TestPropertiesManager {
     private static TestPropertiesManager INSTANCE;
 
     private TestPropertiesManager() {
+        loadApplicationProperties();
+        loadCustomProperties();
+    }
+
+    private void loadApplicationProperties() {
         try {
             properties.load(new FileInputStream("src/main/resources/" +
                     System.getProperty("propertiesFile", "application")
@@ -17,6 +22,16 @@ public class TestPropertiesManager {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void loadCustomProperties() {
+        properties.forEach((key, value) -> System.getProperties()
+                .forEach((custom_key, custom_value) -> {
+                    if (custom_key.toString().equals(key.toString())) {
+                        properties.setProperty(key.toString(), custom_value.toString());
+                    }
+                })
+        );
     }
 
     public static TestPropertiesManager getInstance() {
