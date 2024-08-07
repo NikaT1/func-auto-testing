@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class TestPropertiesManager {
 
-    private Properties properties = new Properties();
+    private final Properties properties = new Properties();
     private static TestPropertiesManager INSTANCE;
 
     private TestPropertiesManager() {

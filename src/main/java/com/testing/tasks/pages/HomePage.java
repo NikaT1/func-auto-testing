@@ -1,5 +1,6 @@
 package com.testing.tasks.pages;
 
+import com.testing.tasks.managers.PageManager;
 import com.testing.tasks.pages.base.BasePage;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebElement;
@@ -34,7 +35,7 @@ public class HomePage extends BasePage {
         String newURL = clickButtonSelectedSliderMenuElement();
         Assertions.assertTrue(newURL.contains("travel"));
         driverManager.getDriver().navigate().to(newURL);
-        return new TravelPage();
+        return PageManager.getInstance().getTravelPage();
     }
 
     private String clickButtonSelectedSliderMenuElement() {

@@ -1,13 +1,13 @@
 package com.testing.tasks;
 
-import com.testing.tasks.pages.HomePage;
+import com.testing.tasks.managers.PageManager;
 import org.junit.jupiter.api.Test;
 
 public class HomePageTest {
 
     @Test
     void firstTest() {
-        new HomePage()
+        PageManager.getInstance().getHomePage()
                 .selectSliderMenuElement("Путешествия")
                 .goToTravelPageFromSliderMenu()
                 .checkOpenPage("Страховка для туристов");
