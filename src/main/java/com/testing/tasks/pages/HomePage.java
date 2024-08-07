@@ -2,6 +2,7 @@ package com.testing.tasks.pages;
 
 import com.testing.tasks.managers.PageManager;
 import com.testing.tasks.pages.base.BasePage;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +18,7 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//div[@class='slide-container is-selected']//a")
     private WebElement selectedSliderMenuButton;
 
+    @Step("Выбор пункта '{menuElement}' из slider меню стартовой страницы")
     public HomePage selectSliderMenuElement(String menuElement) {
         Optional<WebElement> currentElement = sliderMenu.stream()
                 .filter(e -> e.getText()
@@ -31,6 +33,7 @@ public class HomePage extends BasePage {
         return this;
     }
 
+    @Step("Переход на страницу оформления страховки для путешественников")
     public TravelPage goToTravelPageFromSliderMenu() {
         String newURL = clickButtonSelectedSliderMenuElement();
         Assertions.assertTrue(newURL.contains("travel"));
@@ -38,6 +41,7 @@ public class HomePage extends BasePage {
         return PageManager.getInstance().getTravelPage();
     }
 
+    @Step("Нажать на кнопку 'оформить' выбранного пункта меню")
     private String clickButtonSelectedSliderMenuElement() {
         selectedSliderMenuButton.click();
         return selectedSliderMenuButton.getAttribute("href");
