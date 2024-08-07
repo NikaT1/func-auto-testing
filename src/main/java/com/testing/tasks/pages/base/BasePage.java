@@ -1,7 +1,6 @@
 package com.testing.tasks.pages.base;
 
 import com.testing.tasks.managers.DriverManager;
-import com.testing.tasks.managers.TestPropertiesManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;

@@ -7,7 +7,7 @@ public class HomePageTest {
 
     @Test
     void firstTest() {
-        new HomePage().openHomePage()
+        new HomePage()
                 .selectSliderMenuElement("Путешествия")
                 .goToTravelPageFromSliderMenu()
                 .checkOpenPage("Страховка для туристов");

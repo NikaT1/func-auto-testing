@@ -16,12 +16,6 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//div[@class='slide-container is-selected']//a")
     private WebElement selectedSliderMenuButton;
 
-
-    public HomePage openHomePage() {
-        driverManager.getDriver().get("https://www.rgs.ru/");
-        return this;
-    }
-
     public HomePage selectSliderMenuElement(String menuElement) {
         Optional<WebElement> currentElement = sliderMenu.stream()
                 .filter(e -> e.getText()

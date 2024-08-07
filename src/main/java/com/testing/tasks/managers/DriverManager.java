@@ -1,5 +1,6 @@
 package com.testing.tasks.managers;
 
+import com.testing.tasks.utils.PropertiesConstants;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -29,13 +30,13 @@ public class DriverManager {
     }
 
     private void initDriver() {
-        System.setProperty("webdriver.chrome.driver", properties.getProperty("path.chrome.driver.windows"));
+        System.setProperty("webdriver.chrome.driver", properties.getProperty(PropertiesConstants.CHROME_DRIVER));
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(
-                Integer.parseInt(properties.getProperty("page.load.timeout"))));
+                Integer.parseInt(properties.getProperty(PropertiesConstants.PAGE_LOAD_TIMEOUT))));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(
-                Integer.parseInt(properties.getProperty("implicitly.wait"))));
+                Integer.parseInt(properties.getProperty(PropertiesConstants.IMPLICITLY_WAIT))));
     }
 
     public void quiteDriver() {
