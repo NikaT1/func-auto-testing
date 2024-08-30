@@ -6,4 +6,3 @@
 - [X] Page Factory
 - [X] Lombok
 - [X] Allure
-- [ ] Cucumber
